@@ -1,0 +1,25 @@
+<div class="form-control qf-form-control">
+    <span class="qf-parameter btn btn-default btn-xs"
+        ng-repeat="parameter in parameters track by $index"
+        ng-class="{ 'qf-parameter-highlighted': parameter.highlighted }"
+        tabindex="0"
+        qf-focus="{{$index}}"
+        ng-focus="onFocus($index)"
+        ng-keydown="removeParameterOnBackspace($event,$index)">
+        <span class="close" ng-click="removeParameter($index)">&nbsp;x</span>
+        <span class="qf-option-type">{{parameter.label}}: </span>
+        <span class="qf-option-value">{{parameter.value}}</span>
+    </span>
+    <input type="text"
+    	placeholder="Enter search term..."
+        ng-model="inputValue"
+        tab-index="0"
+        uib-typeahead="option for option in options | filterOptions:parameters | filter:{value: $viewValue} | limitTo:8"
+        class="qf-input"
+        typeahead-template-url="query-field/html/QueryFieldOptionsTemplate.html"
+        typeahead-wait-ms="1"
+        typeahead-on-select="onSelect($item)"
+        qf-focus="-1"
+        ng-focus="onFocus(-1)"
+        ng-keydown="onBackspaceInput($event)">
+</div>

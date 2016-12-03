@@ -1,0 +1,7 @@
+<a href tabindex="-1">
+    <span class="qf-option-type">{{match.label.label}}:</span>
+    <span class="qf-option-value"
+        ng-bind-html="match.label.value | uibTypeaheadHighlight:query"
+        ng-attr-title="{{match.label.value}}">
+    </span>
+</a>

@@ -1,0 +1,68 @@
+.qf-option-value {
+  font-size: 16px;
+}
+
+.qf-option-type {
+  font-size: 14px;
+  color: #999;
+  margin-right: 5px;
+}
+
+.dropdown-menu>.active>a .qf-option-type,
+.dropdown-menu>.active>a:focus .qf-option-type,
+.dropdown-menu>.active>a:hover .qf-option-type {
+  color: #DDD;
+}
+
+.form-control.qf-form-control {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 3px;
+  height: initial;
+  /* box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  border-color: rgba(126, 239, 104, 0.8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(126, 239, 104, 0.6);
+  outline: 0 none; */
+}
+
+.qf-input {
+  border: none;
+  outline: none;
+  background: transparent !important;
+  height: 1.666666em;
+  flex: 1;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-left: 4px;
+}
+
+.qf-parameter {
+  margin-right: 2px;
+  margin-top: 1px;
+  margin-bottom:1px;
+}
+
+.qf-parameter.qf-parameter-highlighted,
+.qf-parameter:focus {
+  background-color: #337ab7;
+  outline: none;
+}
+
+.qf-parameter-highlighted .qf-option-value,
+.qf-parameter:focus .qf-option-value {
+  color: #FFF;
+}
+
+.qf-parameter-highlighted .qf-option-type,
+.qf-parameter:focus .qf-option-type {
+  color: #DDD;
+}
+
+.close {
+  font-weight: bold;
+  float: right;
+  opacity: 0.2;
+  font-size: 1.6em;
+  line-height: 1;
+}

@@ -1,0 +1,86 @@
+.rc-calendar-day {
+	border-color: black;
+	border-style: solid;
+	border-width: 0px 1px 1px 0px;
+	width: 100px;
+	height: 100px;
+	display: inline-flex;
+	flex-direction: column;
+	padding: 2px;
+}
+
+.rc-calendar-day-top {
+	border-top-width: 1px;
+}
+
+.rc-calendar-day-left {
+	border-left-width: 1px;
+}
+
+.rc-calendar-day-filler {
+	width: 100px;
+	height: 100px;
+	display: inline-flex;
+	padding: 2px;
+}
+
+.rc-calendar-week {
+	display: flex;
+	flex-direction: row;
+}
+
+.rc-calendar {
+	margin: 20px;
+	display: flex;
+	flex-direction: column;
+}
+
+.rc-calendar-event {
+	background-color: gray;
+	display: flex;
+	border-radius: 3px;
+	padding: 2px;
+	margin-bottom: 1px;
+	font-size: 12px;
+}
+
+.rc-calendar-event-header {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.rc-calendar-event-full {
+  flex-direction: column;
+  padding: 6px;
+  margin-bottom: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.rc-calendar-event.red {
+  background-color: red;
+  color: white;
+}
+
+.rc-calendar-event.orange {
+  background-color: orange;
+}
+
+.rc-calendar-event.yellow {
+  background-color: yellow;
+}
+
+.rc-calendar-event.blue {
+  background-color: blue;
+  color: white;
+}
+
+.rc-calendar-event.green {
+  background-color: green;
+  color: white;
+}
+
+.rc-calendar-event.purple {
+  background-color: purple;
+  color: white;
+}

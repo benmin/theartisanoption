@@ -1,0 +1,16 @@
+<div class="rc-calendar">
+  <ng-transclude></ng-transclude>
+  <div class="rc-calendar-body">
+    <div class="rc-calendar-week" ng-repeat="week in days track by $index">
+      <div ng-click="onClickDay(day)" ng-class="getDayClass(day, $index)" ng-repeat="day in week">
+        <!-- <div>{{day.getDate()}}</div>
+        <div class="rc-calendar-event">Event 1</div> -->
+        <span ng-if="isValidDay(day)">{{day.getDate()}}</span>
+        <span ng-if="!isValidDay(day)">&nbsp;</span>
+        <div class="rc-calendar-event {{event.color}}" ng-if="isValidDay(day)" ng-repeat="event in calendar.calendarData.days[day].events">
+          {{event.name}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
