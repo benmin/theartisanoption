@@ -68,7 +68,8 @@ module.exports = function (grunt) {
 				},
 				files: {
 					'dist/public/app.min.js': ['dist/public/js/app.js'],
-                    'dist/public/admin.min.js': ['dist/public/js/admin.js']
+                    'dist/public/resultspage.min.js': ['dist/public/js/resultspage.js'],
+                    'dist/public/signuppage.min.js': ['dist/public/js/signuppage.js']
 				}
 			}
 		},
@@ -86,18 +87,28 @@ module.exports = function (grunt) {
 		    }
 		},
 		cssmin: {
-			build: {
+            buildMain: {
+                files: {
+                    'dist/public/style.min.css': ['dist/public/css/style.css','dist/public/css/fonts.css','dist/public/css/gw.css']
+                }
+            },
+			buildResults: {
 				files: {
-					'dist/public/style.min.css': ['dist/public/css/style.css','dist/public/css/fonts.css'],
-                    'dist/public/admin.min.css': ['dist/public/css/admin.css']
+					'dist/public/resultspage.min.css': ['dist/public/css/resultspage.css','dist/public/css/gw.css','dist/public/css/fonts.css']
 				}
-			}
+			},
+            buildSignUp: {
+                files: {
+                    'dist/public/signuppage.min.css': ['dist/public/css/gw.css','dist/public/css/fonts.css']
+                }
+            }
 		},
 		processhtml: {
 			build: {
 				files: {
 					'dist/public/index.html': ['dist/public/index.html'],
-                    'dist/public/html/posts.html': ['dist/public/html/posts.html']
+                    'dist/public/results.html': ['dist/public/results.html'],
+                    'dist/public/signup.html': ['dist/public/signup.html']
 				}
 			}
 		},
@@ -115,9 +126,13 @@ module.exports = function (grunt) {
                 src: ['src/public/jsx/*.jsx'],
                 dest: 'dist/public/js/app.js'
             },
-            buildAdmin: {
-                src: ['src/public/jsx/admin/*.jsx'],
-                dest: 'dist/public/js/admin.js'
+            buildResults: {
+                src: ['src/public/jsx/results/*.jsx'],
+                dest: 'dist/public/js/resultspage.js'
+            },
+            buildSignUp: {
+                src: ['src/public/jsx/signup/*.jsx'],
+                dest: 'dist/public/js/signuppage.js'
             }
         },
 		copy: {
@@ -211,7 +226,7 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('test', ['karma:development']);
 	
-	grunt.registerTask('build-src', ['clean:src','copy:src','postcss:build','cssmin','clean:css','babel:jsx','uglify:build','clean:js','processhtml']);
+	grunt.registerTask('build-src', ['clean:src','copy:src','postcss:build','cssmin','clean:css','babel:jsx','uglify:build','clean:js','processhtml:buildMain','processhtml:buildResults']);
     grunt.registerTask('build-src2', ['clean:src','browserify:build']);
 	grunt.registerTask('build-dependencies', ['clean:dependencies','copy:dependencies']);
 	grunt.registerTask('build-all', ['build-dependencies','build-src']);
@@ -224,13 +239,15 @@ module.exports = function (grunt) {
     
     
     
-    grunt.registerTask('build-jsx', ['browserify:buildMain','browserify:buildAdmin']);
+    grunt.registerTask('build-jsx', ['browserify:buildMain','browserify:buildResults','browserify:buildSignUp']);
+    grunt.registerTask('build-css', ['cssmin:buildMain','cssmin:buildResults','cssmin:buildSignUp']);
+    grunt.registerTask('build-html', ['processhtml:build']);
     
     grunt.registerTask('run', ['express:prod','keepalive']);
     
     grunt.registerTask('build-debug', ['clean:all','copy:all','build-jsx','postcss:build']);
     grunt.registerTask('build-debug-run', ['build-debug','run']);
     
-    grunt.registerTask('build-prod', ['clean:all','copy:all','build-jsx','uglify:build','clean:js','postcss:build','cssmin','clean:css','processhtml']);
+    grunt.registerTask('build-prod', ['clean:all','copy:all','build-jsx','uglify:build','clean:js','postcss:build','build-css','clean:css','build-html']);
     grunt.registerTask('build-prod-run', ['build-prod','run']);
 };

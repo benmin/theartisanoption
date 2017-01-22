@@ -181,6 +181,22 @@ var ServerApp = function() {
         router.get('/', function(request, response) {
 	      	response.sendFile(path.join(__dirname, 'public/index.html'));
 	    });
+        
+        router.get('/search', function(request, response) {
+            response.sendFile(path.join(__dirname, 'public/results.html'));
+        });
+        
+        router.get('/signup', function(request, response) {
+            response.sendFile(path.join(__dirname, 'public/signup.html'));
+        });
+        
+        router.get('/login', function(request, response) {
+            response.sendFile(path.join(__dirname, 'public/login.html'));
+        });
+        
+        router.get('/account', function(request, response) {
+            response.sendFile(path.join(__dirname, 'public/account.html'));
+        });
 
 //        //  Add handlers for the app (from the routes).
 //        for (var r in me.routes) {
@@ -188,11 +204,6 @@ var ServerApp = function() {
 //        }
         
         me.app.use('/', router);
-        
-        me.app.use('/api/support', require('./routes/SupportRoutes.js'));
-        me.app.use('/api/newsfeed', require('./routes/NewsFeedRoutes.js'));
-        me.app.use('/login', require('./routes/LoginRoutes.js'));
-        me.app.use('/admin', require('./routes/AdminRoutes.js'));
         
         // Setup static resources
         // This MUST be done after the me.app is created

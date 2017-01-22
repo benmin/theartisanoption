@@ -1,5 +1,3 @@
-var NewsFeed = require('./NewsFeed');
-
 var Modal = ReactBootstrap.Modal;
 var Button = ReactBootstrap.Button;
 
