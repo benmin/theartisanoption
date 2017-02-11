@@ -1,16 +1,11 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
-var BusinessSchema = require('./Business').schema;
 
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
     username: { type: String, required: true },
-    password: { type: String, required: true },
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
-    email: { type: String, required: true },
-    businesses: [BusinessSchema]
+    password: { type: String, required: true }
 });
 
 //userSchema.methods.generateHash = function(password) {

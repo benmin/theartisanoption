@@ -181,18 +181,6 @@ var ServerApp = function() {
         router.get('/', function(request, response) {
 	      	response.sendFile(path.join(__dirname, 'public/index.html'));
 	    });
-        
-        router.get('/search', function(request, response) {
-            response.sendFile(path.join(__dirname, 'public/results.html'));
-        });
-        
-        router.get('/login', function(request, response) {
-            response.sendFile(path.join(__dirname, 'public/login.html'));
-        });
-        
-        router.get('/signup', function(request, response) {
-            response.sendFile(path.join(__dirname, 'public/signup.html'));
-        });
 
 //        //  Add handlers for the app (from the routes).
 //        for (var r in me.routes) {
@@ -200,19 +188,11 @@ var ServerApp = function() {
 //        }
         
         me.app.use('/', router);
-        me.app.use('/account', require('./routes/UserRoutes'));
-        me.app.use('/editor', require('./routes/BusinessRoutes'));
         
-        // GET  /                        home
-        // POST /                       search
-        // GET  /account                 user account manager (requires login)
-        // POST /account                create new user
-        // GET  /account/<user_id>      get user info by id (requires login)
-        // POST /account/<user_id>      update user info (requires login)
-        // GET  /business               business manager (requires login)
-        // POST /business               create new business
-        // GET  /business/<biz_id>      get business by id (requires login)
-        // POST /business/<biz_id>      update business info (requires login)
+        me.app.use('/api/support', require('./routes/SupportRoutes.js'));
+        me.app.use('/api/newsfeed', require('./routes/NewsFeedRoutes.js'));
+        me.app.use('/login', require('./routes/LoginRoutes.js'));
+        me.app.use('/admin', require('./routes/AdminRoutes.js'));
         
         // Setup static resources
         // This MUST be done after the me.app is created

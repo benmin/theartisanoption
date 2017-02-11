@@ -1,3 +1,5 @@
+var NewsFeed = require('./NewsFeed');
+
 var Modal = ReactBootstrap.Modal;
 var Button = ReactBootstrap.Button;
 
@@ -190,11 +192,11 @@ var ClientApp = React.createClass({
             <div id="main">
                 <div id="menu-top-section" className="gw-row gw-center-h">
                     <ul className="gw-menu-inline">
-                        <li className="gw-menu-item"><a href="">Home</a></li>
-                        <li className="gw-menu-item"><a href="">Announcements</a></li>
-                        <li className="gw-menu-item"><a href="">Blog</a></li>
-                        <li className="gw-menu-item"><a href="login">Sign In</a></li>
-                        <li className="gw-menu-item"><a href="signup">Sign Up</a></li>
+                        <li className="gw-menu-item">Home</li>
+                        <li className="gw-menu-item">Announcements</li>
+                        <li className="gw-menu-item">Blog</li>
+                        <li className="gw-menu-item">Sign In</li>
+                        <li className="gw-menu-item">Sign Up</li>
                     </ul>
                 </div>
                 <div id="title-section" className="gw-row gw-center-h">

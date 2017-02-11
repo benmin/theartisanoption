@@ -32,3 +32,30 @@
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;
 }
+
+.review-title {
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.review {
+    padding: 10px;
+}
+
+.review-title-row {
+    margin-bottom: 5px;
+}
+
+.review-reviewer {
+    margin-bottom: 5px;
+}
+
+.review-content {
+    margin-bottom: 5px;
+}
+
+.review-helpful {
+    color: gray;
+    font-style: italic;
+    font-size: 14;
+}

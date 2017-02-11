@@ -1,3 +1,5 @@
+var NewsFeed = require('./NewsFeed');
+
 var Modal = ReactBootstrap.Modal;
 var Button = ReactBootstrap.Button;
 
@@ -187,59 +189,7 @@ var ClientApp = React.createClass({
     
 	render: function() {
 		return (
-            <div id="main">
-                <div id="menu-top-section" className="gw-row gw-center-h">
-                    <ul className="gw-menu-inline">
-                        <li className="gw-menu-item"><a href="">Home</a></li>
-                        <li className="gw-menu-item"><a href="">Announcements</a></li>
-                        <li className="gw-menu-item"><a href="">Blog</a></li>
-                        <li className="gw-menu-item"><a href="login">Sign In</a></li>
-                        <li className="gw-menu-item"><a href="signup">Sign Up</a></li>
-                    </ul>
-                </div>
-                <div id="title-section" className="gw-row gw-center-h">
-                    <div id="title-section-column" className="gw-column">
-                        <div id="site-title" className="gw-row">The Artisan Option</div>
-                        <div className="gw-row">
-                            <div className="gw-column">
-                                <div className="phrase phrase-one">Love what you do.</div>
-                                <div className="phrase phrase-two">Love what you buy.</div>
-                            </div>
-                            <div className="gw-column">
-                                <img id="logo" src="img/taologo4_nobg.png"></img>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div id="search-section">
-                    <div id="site-description">Description of site.</div>
-                    <div id="search"></div>
-                    <div id="social-media"></div>
-                </div>
-                
-                <div id="menu-bottom-section" className="gw-row gw-center-h">
-                    <ul className="gw-menu-inline gw-sm">
-                        <li className="gw-menu-item">About</li>
-                        <li className="gw-menu-item">Terms of Service</li>
-                    </ul>
-                </div>
-                
-                <svg height="0" xmlns="http://www.w3.org/2000/svg">
-                    <filter id="drop-shadow">
-                        <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
-                        <feOffset dx="2" dy="2" result="offsetblur"/>
-                        <feFlood flood-color="#777"/>
-                        <feComposite in2="offsetblur" operator="in"/>
-                        <feMerge>
-                            <feMergeNode/>
-                            <feMergeNode in="SourceGraphic"/>
-                        </feMerge>
-                    </filter>
-                </svg>
-            
-            
-            {/*<div id="scrolling">
+			<div id="scrolling">
 				<div id="main">
 					<div id="main-foreground" className="gw-column">
                         <div id="modal-wrapper"></div>
@@ -254,7 +204,7 @@ var ClientApp = React.createClass({
                         <div id="teaser" className="gw-row gw-center-h common-font">
                             <div className="left gw-column box-black">
                                 <div><strong>Love what you do.</strong></div>
-                                <div>
+                                <div>{/*You know how to perform your craft.<br />*/}
                                     Let us connect you with local customers,<br />
                                     so you can focus on what you do best:<br />
                                     crafting quality products.
@@ -356,8 +306,7 @@ var ClientApp = React.createClass({
 					</div>
 				</div>
                 <NewsFeed />
-			</div>*/}
-            </div>
+			</div>
 		);
 	}
 });

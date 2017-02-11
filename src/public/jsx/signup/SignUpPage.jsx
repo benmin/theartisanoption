@@ -19,8 +19,32 @@ var SignUpPage = React.createClass({
     },
     
     onSubmit: function(e) {
-        console.log(arguments);
         e.preventDefault();
+        
+        var user = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            username: this.state.username,
+            password: this.state.password
+        };
+        
+        fetch('/api/user/signup', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            }).then(function(response) {
+                if(response.status === 200) {
+                    console.log(response);
+                    console.log(response.msg);
+                } else {
+                    console.log(response);
+                    console.log(response.msg);
+                }
+            });
     },
     
     updateFieldState: function(e) {
@@ -65,7 +89,7 @@ var SignUpPage = React.createClass({
                             I agree to the <a href="terms-of-service" onClick={this.showTermsOfService}>Terms of Service</a>.
                         </label>
                     </div>
-                    <button type="submit" className="btn btn-primary" disabled={!this.state.formValid}>Sign Up</button>
+                    <button type="submit" className="btn btn-primary" disabled={this.state.formValid}>Sign Up</button>
                 </form>
             </div>
         );

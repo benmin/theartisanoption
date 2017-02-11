@@ -1,3 +1,6 @@
+var Reviews = require('./Reviews');
+var ReviewSection = Reviews.ReviewSection;
+
 var Tabs = ReactBootstrap.Tabs,
     Tab = ReactBootstrap.Tab;
 
@@ -52,6 +55,27 @@ var localResults = [{
         title: 'Photo 6'
     },{
         title: 'Photo 6'
+    }],
+    reviews: [{
+        rating: 3.5,
+        reviewerName: 'Darth Vader',
+        title: 'My Review',
+        content: 'This is my awesome review. This business is really cool, but my review is even cooler. And I am the reviewer of this business, who wrote this review. So yeah, I am awesome too.'
+    },{
+        rating: 4.5,
+        reviewerName: 'Darth Vader',
+        title: 'My Review',
+        content: 'This is my awesome review. This business is really cool, but my review is even cooler. And I am the reviewer of this business, who wrote this review. So yeah, I am awesome too.'
+    },{
+        rating: 1.5,
+        reviewerName: 'Darth Vader',
+        title: 'My Review',
+        content: 'This is my awesome review. This business is really cool, but my review is even cooler. And I am the reviewer of this business, who wrote this review. So yeah, I am awesome too.'
+    },{
+        rating: 2,
+        reviewerName: 'Darth Vader',
+        title: 'My Review',
+        content: 'This is my awesome review. This business is really cool, but my review is even cooler. And I am the reviewer of this business, who wrote this review. So yeah, I am awesome too.'
     }]
 },{
     name: 'Gnarled Oak Art',
@@ -84,6 +108,27 @@ var localResults = [{
         title: 'Picture 5'
     },{
         title: 'Photo 6'
+    }],
+    reviews: [{
+        rating: 3.5,
+        reviewerName: 'Darth Vader',
+        title: 'My Review',
+        content: 'This is my awesome review. This business is really cool, but my review is even cooler. And I am the reviewer of this business, who wrote this review. So yeah, I am awesome too.'
+    },{
+        rating: 4.5,
+        reviewerName: 'Darth Vader',
+        title: 'My Review',
+        content: 'This is my awesome review. This business is really cool, but my review is even cooler. And I am the reviewer of this business, who wrote this review. So yeah, I am awesome too.'
+    },{
+        rating: 1.5,
+        reviewerName: 'Darth Vader',
+        title: 'My Review',
+        content: 'This is my awesome review. This business is really cool, but my review is even cooler. And I am the reviewer of this business, who wrote this review. So yeah, I am awesome too.'
+    },{
+        rating: 2,
+        reviewerName: 'Darth Vader',
+        title: 'My Review',
+        content: 'This is my awesome review. This business is really cool, but my review is even cooler. And I am the reviewer of this business, who wrote this review. So yeah, I am awesome too.'
     }]
 }];
 
@@ -135,22 +180,6 @@ var PhotoSection = React.createClass({
                     );
                 }, this)}
             </div>
-        );
-    }
-});
-
-var ReviewSection = React.createClass({
-    displayName: 'ReviewSection',
-    
-    getInitialState: function() {
-        return {
-            
-        }
-    },
-    
-    render: function() {
-        return (
-            <div>Reviews</div>
         );
     }
 });
