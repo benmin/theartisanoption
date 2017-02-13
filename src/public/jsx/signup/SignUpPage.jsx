@@ -57,7 +57,7 @@ var SignUpPage = React.createClass({
     render: function() {
         return (
             <div className="gw-column gw-padding">
-                <form className="form" onSubmit={this.onSubmit}>
+                <form className="form" action="/account/signup" method="post">
                     <div className="form-group">
                         <label>First Name</label>
                         <input type="text" className="form-control" name="firstName" value={this.state.firstName} onChange={this.updateFieldState}></input>
@@ -77,7 +77,7 @@ var SignUpPage = React.createClass({
                     </div>
                     <div className="form-group">
                         <label>Password</label>
-                        <input type="password" className="form-control" name="password" value={this.state.passwordAgain} onChange={this.updateFieldState}></input>
+                        <input type="password" className="form-control" name="password" value={this.state.password} onChange={this.updateFieldState}></input>
                     </div>
                     <div className="form-group">
                         <label>Re-Enter Password</label>

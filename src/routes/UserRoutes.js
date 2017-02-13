@@ -21,15 +21,49 @@ function isAuthenticated(request, response, next) {
         // POST /account/<user_id>      update user info (requires login)
 
 router.get('/', isAuthenticated, function(request, response, next) {
-    response.sendFile(path.join(__dirname, 'public/html/account.html'))
+    response.sendFile(path.join(__dirname, '../public/account.html'))
 });
 
-router.post('/', isAuthenticated, function(request, response, next) {
-    // update user info
+router.get('/user', isAuthenticated, function(request, response, next) {
+    User.findOne({ '_id': request.sessionID }, function(err, user) {
+        if(err) return err;
+
+        console.log('found user = ', user);
+
+        response.setHeader('Content-Type', 'application/json');
+        response.send(JSON.stringify(user));
+    });
+});
+
+router.put('/:id', isAuthenticated, function(request, response, next) {
+    var userData = request.body,
+        userId = userData;
+    
+    if(userId === request.sessionID) {
+        
+        User.findOne({ '_id': userId }, function(err, user) {
+            if(err) return err;
+            
+            console.log('found user = ', user);
+            
+            user.username = userData.username;
+            user.password = userData.password;
+            user.firstName = userData.firstName;
+            user.lastName = userData.lastName;
+            user.email = userData.email;
+            
+            user.save(function(err) {
+                if(err) return err;
+            });
+        });
+    } else {
+        // send back error
+    }
 });
 
 router.get('/signup', function(request, response, next) {
-    response.sendFile(path.join(__dirname, 'public/signup.html'));
+    console.log(__dirname);
+    response.sendFile(path.join(__dirname, '../public/signup.html'));
 });
 
 router.post('/signup', function(request, response, next) {
@@ -54,14 +88,14 @@ router.post('/signup', function(request, response, next) {
                 
                 response.redirect('/account');
                 
-                response.json({success: true});
+//                response.json({success: true});
             });
         }
     });
 });
 
 router.get('/login', function(request, response, next) {
-    response.sendFile(path.join(__dirname, 'public/login.html'));
+    response.sendFile(path.join(__dirname, '../public/login.html'));
 });
 
 router.post('/login', passport.authenticate('local', {

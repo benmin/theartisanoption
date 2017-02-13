@@ -12,7 +12,6 @@ module.exports = function (grunt) {
 		        'bower_components/angular-mocks/angular-mocks.js',
 		        'bower_components/restangular/dist/restangular.js',
 		        'bower_components/underscore/underscore.js',
-		        'bower_components/underscore/underscore.js',
 		        'test/**/*Spec.js'
 		    ]
 	    },
@@ -71,7 +70,8 @@ module.exports = function (grunt) {
                     'dist/public/resultspage.min.js': ['dist/public/js/resultspage.js'],
                     'dist/public/signuppage.min.js': ['dist/public/js/signuppage.js'],
                     'dist/public/loginpage.min.js': ['dist/public/js/loginpage.js'],
-                    'dist/public/editorpage.min.js': ['dist/public/js/editorpage.js']
+                    'dist/public/editorpage.min.js': ['dist/public/js/editorpage.js'],
+                    'dist/public/accountpage.min.js': ['dist/public/js/accountpage.js']
 				}
 			}
 		},
@@ -113,6 +113,11 @@ module.exports = function (grunt) {
                 files: {
                     'dist/public/editorpage.min.css': ['dist/public/css/gw.css','dist/public/css/fonts.css']
                 }
+            },
+            buildAccount: {
+                files: {
+                    'dist/public/accountpage.min.css': ['dist/public/css/gw.css','dist/public/css/fonts.css']
+                }
             }
 		},
 		processhtml: {
@@ -122,7 +127,8 @@ module.exports = function (grunt) {
                     'dist/public/results.html': ['dist/public/results.html'],
                     'dist/public/signup.html': ['dist/public/signup.html'],
                     'dist/public/login.html': ['dist/public/login.html'],
-                    'dist/public/editor.html': ['dist/public/editor.html']
+                    'dist/public/editor.html': ['dist/public/editor.html'],
+                    'dist/public/account.html': ['dist/public/account.html']
 				}
 			}
 		},
@@ -155,6 +161,10 @@ module.exports = function (grunt) {
             buildEditor: {
                 src: ['src/public/jsx/editor/*.jsx'],
                 dest: 'dist/public/js/editorpage.js'
+            },
+            buildAccount: {
+                src: ['src/public/jsx/account/*.jsx'],
+                dest: 'dist/public/js/accountpage.js'
             }
         },
 		copy: {
@@ -261,8 +271,8 @@ module.exports = function (grunt) {
     
     
     
-    grunt.registerTask('build-jsx', ['browserify:buildMain','browserify:buildResults','browserify:buildSignUp','browserify:buildLogin','browserify:buildEditor']);
-    grunt.registerTask('build-css', ['cssmin:buildMain','cssmin:buildResults','cssmin:buildSignUp','cssmin:buildLogin','cssmin:buildEditor']);
+    grunt.registerTask('build-jsx', ['browserify:buildMain','browserify:buildResults','browserify:buildSignUp','browserify:buildLogin','browserify:buildEditor','browserify:buildAccount']);
+    grunt.registerTask('build-css', ['cssmin:buildMain','cssmin:buildResults','cssmin:buildSignUp','cssmin:buildLogin','cssmin:buildEditor','cssmin:buildAccount']);
     grunt.registerTask('build-html', ['processhtml:build']);
     
     grunt.registerTask('run', ['express:prod','keepalive']);

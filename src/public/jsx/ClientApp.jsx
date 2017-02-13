@@ -193,8 +193,8 @@ var ClientApp = React.createClass({
                         <li className="gw-menu-item"><a href="">Home</a></li>
                         <li className="gw-menu-item"><a href="">Announcements</a></li>
                         <li className="gw-menu-item"><a href="">Blog</a></li>
-                        <li className="gw-menu-item"><a href="login">Sign In</a></li>
-                        <li className="gw-menu-item"><a href="signup">Sign Up</a></li>
+                        <li className="gw-menu-item"><a href="account/login">Sign In</a></li>
+                        <li className="gw-menu-item"><a href="account/signup">Sign Up</a></li>
                     </ul>
                 </div>
                 <div id="title-section" className="gw-row gw-center-h">

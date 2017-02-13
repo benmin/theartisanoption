@@ -186,13 +186,13 @@ var ServerApp = function() {
             response.sendFile(path.join(__dirname, 'public/results.html'));
         });
         
-        router.get('/login', function(request, response) {
-            response.sendFile(path.join(__dirname, 'public/login.html'));
-        });
-        
-        router.get('/signup', function(request, response) {
-            response.sendFile(path.join(__dirname, 'public/signup.html'));
-        });
+//        router.get('/login', function(request, response) {
+//            response.sendFile(path.join(__dirname, 'public/login.html'));
+//        });
+//        
+//        router.get('/signup', function(request, response) {
+//            response.sendFile(path.join(__dirname, 'public/signup.html'));
+//        });
 
 //        //  Add handlers for the app (from the routes).
 //        for (var r in me.routes) {
@@ -201,7 +201,7 @@ var ServerApp = function() {
         
         me.app.use('/', router);
         me.app.use('/account', require('./routes/UserRoutes'));
-        me.app.use('/editor', require('./routes/BusinessRoutes'));
+        me.app.use('/business', require('./routes/BusinessRoutes'));
         
         // GET  /                        home
         // POST /                       search

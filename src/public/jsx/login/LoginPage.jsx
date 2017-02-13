@@ -49,7 +49,7 @@ var LoginPage = React.createClass({
     render: function() {
         return (
             <div className="gw-column gw-padding">
-                <form className="form" action="/api/user/login" method="post">
+                <form className="form" action="/account/login" method="post">
                     <div className="form-group">
                         <label>Username</label>
                         <input type="text" className="form-control" name="username" value={this.state.username} onChange={this.updateFieldState}></input>
