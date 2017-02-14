@@ -11,6 +11,11 @@ var EditorPage = React.createClass({
                     return value.length > 0;
                 }
             },
+            shortDescription: {
+                isValid: function(value) {
+                    return value.length > 0;
+                }
+            },
             website: {
                 isValid: function(value) {
                     return value.length > 0;
@@ -55,7 +60,10 @@ var EditorPage = React.createClass({
             value = e.target.value;
         
         stateUpdate.businessInfo.address[fieldName] = value;
-        stateUpdate[fieldName] = this.state[fieldName];
+        stateUpdate[fieldName] = {};
+        if(this.state[fieldName]) {
+            stateUpdate[fieldName] = this.state[fieldName];
+        }
         stateUpdate[fieldName].dirty = true;
         
         this.setState(stateUpdate);
@@ -67,6 +75,10 @@ var EditorPage = React.createClass({
         var stateUpdate = {};
         
         var fieldState = stateUpdate[fieldName] = this.state[fieldName];
+        
+        if(!fieldState) {
+            fieldState = {};
+        }
         
         if(fieldState.isValid) {
             fieldState.valid = fieldState.isValid(value);
@@ -95,9 +107,10 @@ var EditorPage = React.createClass({
         
         var businessInfo = this.state.businessInfo;
         
-        fetch('/api/business', {
+        fetch('/business', {
             method: 'POST',
             redirect: 'follow',
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -129,6 +142,17 @@ var EditorPage = React.createClass({
                             <span className="help-block">Please enter the name of your business.</span>
                         : null }
                     </div>
+                    <div className={"form-group" + this.getFieldClass('shortDescription')}>
+                        <label>Short Description</label>
+                        <input type="text" className="form-control" name="shortDescription" value={this.state.businessInfo.shortDescription} onChange={this.updateFieldState} />
+                        { !this.state.shortDescription.valid && this.state.shortDescription.dirty ?
+                            <span className="help-block">Please a short description of your business.</span>
+                        : null }
+                    </div>
+                    <div className="form-group">
+                        <label>Long Description</label>
+                        <input type="text" className="form-control" name="longDescription" value={this.state.businessInfo.longDescription} onChange={this.updateFieldState} />
+                    </div>
                     <div className="form-group">
                         <label>Website URL</label>
                         <input type="text" className="form-control" name="website" value={this.state.businessInfo.website} onChange={this.updateFieldState} />
@@ -149,19 +173,19 @@ var EditorPage = React.createClass({
                     </div>
                     <div className="form-group">
                         <label>Street Address</label>
-                        <input type="text" className="form-control" name="address.streetAddress" value={this.state.businessInfo.address.streetAddress} onChange={this.updateAddressFieldState}></input>
+                        <input type="text" className="form-control" name="streetAddress" value={this.state.businessInfo.address.streetAddress} onChange={this.updateAddressFieldState}></input>
                     </div>
                     <div className="form-group">
                         <label>City</label>
-                        <input type="text" className="form-control" name="address.city" value={this.state.businessInfo.address.city} onChange={this.updateAddressFieldState}></input>
+                        <input type="text" className="form-control" name="city" value={this.state.businessInfo.address.city} onChange={this.updateAddressFieldState}></input>
                     </div>
                     <div className="form-group">
                         <label>State</label>
-                        <input type="text" className="form-control" name="address.state" value={this.state.businessInfo.address.state} onChange={this.updateAddressFieldState}></input>
+                        <input type="text" className="form-control" name="state" value={this.state.businessInfo.address.state} onChange={this.updateAddressFieldState}></input>
                     </div>
                     <div className="form-group">
                         <label>Zipcode</label>
-                        <input type="text" className="form-control" name="address.zipcode" value={this.state.businessInfo.address.zipcode} onChange={this.updateAddressFieldState}></input>
+                        <input type="text" className="form-control" name="zipcode" value={this.state.businessInfo.address.zipcode} onChange={this.updateAddressFieldState}></input>
                     </div>
                     
                     <div className="btn-toolbar">

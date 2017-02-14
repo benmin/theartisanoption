@@ -25,8 +25,9 @@ router.get('/', isAuthenticated, function(request, response, next) {
 });
 
 router.get('/user', isAuthenticated, function(request, response, next) {
-    User.findOne({ '_id': request.sessionID }, function(err, user) {
-        if(err) return err;
+    console.log(request.session.userId);
+    User.findById(request.session.userId, function(err, user) {
+        if(err) return console.log(err);
 
         console.log('found user = ', user);
 
@@ -61,11 +62,17 @@ router.put('/:id', isAuthenticated, function(request, response, next) {
     }
 });
 
+/*
+/ Retrieve the signup page.
+*/
 router.get('/signup', function(request, response, next) {
     console.log(__dirname);
     response.sendFile(path.join(__dirname, '../public/signup.html'));
 });
 
+/*
+/ Create a new user.
+*/
 router.post('/signup', function(request, response, next) {
     var userData = request.body;
     
@@ -94,10 +101,16 @@ router.post('/signup', function(request, response, next) {
     });
 });
 
+/*
+/ Retrieve the login page.
+*/
 router.get('/login', function(request, response, next) {
     response.sendFile(path.join(__dirname, '../public/login.html'));
 });
 
+/*
+/ Log in with a username and password.
+*/
 router.post('/login', passport.authenticate('local', {
     successRedirect: '/account',
     failureRedirect: '/account/login',

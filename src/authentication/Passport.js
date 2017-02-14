@@ -47,6 +47,8 @@ module.exports = function(passport) {
                 return done(null, false);//, request.flash('loginMessage', 'Oops! Wrong password.'));
             }
             
+            request.session.userId = user._id;
+            
             console.log(user.username);
             console.log('user is valid');
             

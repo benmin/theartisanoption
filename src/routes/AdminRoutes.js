@@ -10,7 +10,7 @@ function isAuthenticated(request, response, next) {
     if(request.isAuthenticated()) {
         next();
     } else {
-        response.redirect('/login');
+        response.redirect('/account/login');
     }
 }
 

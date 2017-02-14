@@ -3,14 +3,9 @@ var AccountPage = React.createClass({
     
     getInitialState: function() {
         return {
-            businesses: [],
-            _id: '',
-            firstName: '',
-            lastName: '',
-            email: '',
-            username: '',
-            password: '',
-            passwordAgain: '',
+            user: {
+                businesses: []
+            },
             formValid: false
         };
     },
@@ -26,9 +21,11 @@ var AccountPage = React.createClass({
                 'Content-Type': 'application/json'
             }
         }).then(function(response) {
-            console.log(response);
+			return response.json();
+		}).then(function(user) {
+            console.log(user);
             me.setState({
-                firstName: response.firstName
+                user: user
             });
         });
     },
@@ -93,6 +90,15 @@ var AccountPage = React.createClass({
         this.setState(newState);
     },
     
+    updateUserFieldState: function(event) {
+        var newUserState = this.state.user;
+        newUserState[e.target.name] = e.target.value;
+        
+        this.setState({
+            user: newUserState
+        });
+    },
+    
     addBusiness: function() {
         fetch('/business', {
             method: 'GET',
@@ -113,36 +119,38 @@ var AccountPage = React.createClass({
                 <form className="form" onSubmit={this.updateAccountInfo}>
                     <div className="form-group">
                         <label>First Name</label>
-                        <input type="text" className="form-control" name="firstName" value={this.state.firstName} onChange={this.updateFieldState}></input>
+                        <input type="text" className="form-control" name="firstName" value={this.state.user.firstName} onChange={this.updateUserFieldState}></input>
                     </div>
                     <div className="form-group">
                         <label>Last Name</label>
-                        <input type="text" className="form-control" name="lastName" value={this.state.lastName} onChange={this.updateFieldState}></input>
+                        <input type="text" className="form-control" name="lastName" value={this.state.user.lastName} onChange={this.updateUserFieldState}></input>
                     </div>
                     <div className="form-group">
                         <label>Email</label>
-                        <input type="email" className="form-control" name="email" value={this.state.email} onChange={this.updateFieldState}></input>
+                        <input type="email" className="form-control" name="email" value={this.state.user.email} onChange={this.updateUserFieldState}></input>
                         <span className="help-block">Please enter a valid email address.</span>
                     </div>
                     <div className="form-group">
                         <label>Username</label>
-                        <input type="text" className="form-control" name="username" value={this.state.username} onChange={this.updateFieldState}></input>
+                        <input type="text" className="form-control" name="username" value={this.state.user.username} onChange={this.updateUserFieldState}></input>
                     </div>
                     <div className="form-group">
                         <label>Password</label>
-                        <input type="password" className="form-control" name="password" value={this.state.passwordAgain} onChange={this.updateFieldState}></input>
+                        <input type="password" className="form-control" name="password" value={this.state.user.passwordAgain} onChange={this.updateUserFieldState}></input>
                     </div>
                     <div className="form-group">
                         <label>Re-Enter Password</label>
-                        <input type="password" className="form-control" name="passwordAgain" value={this.state.passwordAgain} onChange={this.updateFieldState}></input>
+                        <input type="password" className="form-control" name="passwordAgain" value={this.state.user.passwordAgain} onChange={this.updateUserFieldState}></input>
                     </div>
                     <button type="submit" className="btn btn-primary">Update Info</button>
                 </form>
                 <button className="btn btn-primary"><a href="/business">Add New Business</a></button>
-                {this.state.businesses.map(function(business, i) {
-                    <div className="gw-row">
-                        <a href={"/business/" + business._id}>{business.name}</a>
-                    </div>
+                {this.state.user.businesses.map(function(business, i) {
+                    return (
+                        <div className="gw-row">
+                            <a href={"/business/" + business._id}>{business.name}</a>
+                        </div>
+                    )
                 })}
             </div>
         );
