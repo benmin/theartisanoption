@@ -44,7 +44,8 @@
     "grunt-browserify": "~5.0.0",
     "babelify": "~7.3.0",
     "watchify": "~3.7.0",
-    "grunt-keepalive": "~1.0.0"
+    "grunt-keepalive": "~1.0.0",
+    "dedupe": "~2.1.0"
   },
   "dependencies": {
     "body-parser": "^1.15.1",
@@ -66,6 +67,9 @@
     "node": ">= 0.6.0",
     "npm": ">= 1.0.0"
   },
+    "scripts": {
+        "start": "node dist/ServerApp.js",
+    },
   "private": true,
   "main": "dist/ServerApp.js"
 }
