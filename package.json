@@ -1,10 +1,9 @@
 {
-  "name": "TheArtisanOption",
-  "namelower": "theartisanoption",
-  "version": "0.0.1",
+  "name": "the-artisan-option",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/benmin/theartisanoption.git"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.7",
@@ -64,11 +63,12 @@
     "react-dom": "~15.3.2"
   },
   "engines": {
-    "node": ">= 0.6.0",
-    "npm": ">= 1.0.0"
+    "node": "*",
+    "npm": "*"
   },
     "scripts": {
-        "start": "node dist/ServerApp.js",
+        "build": "grunt build-prod",
+        "start": "npm run build && node dist/ServerApp.js"
     },
   "private": true,
   "main": "dist/ServerApp.js"
