@@ -68,7 +68,7 @@
   },
     "scripts": {
         "build": "grunt build-prod",
-        "start": "npm run build && node dist/ServerApp.js",
+        "start": "node dist/ServerApp.js",
         "test": "echo 'testing'"
     },
   "private": true,
